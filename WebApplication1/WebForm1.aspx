@@ -10,9 +10,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-     <asp:Label ID="ABRA" Text="<%# dataA %>" runat="server"/>
-         <br />
-     <asp:Label runat="server" Text="<%# dataB %>" />
+        <asp:DropDownList ID="qwerty" runat="server" ></asp:DropDownList>
+        <br />
+        <asp:Label ID="Label1" runat="server" EnableViewState="false"/>
     </div>
     </form>
 </body>

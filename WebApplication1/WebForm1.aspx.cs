@@ -9,17 +9,7 @@ namespace WebApplication1
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        protected string dataA
-        {
-            get { return "ЛАБУТЕНЫ"; }
-        }
-        protected string dataB
-        {
-            get { return "АХУИТЕЛЬНЫЕ ШТАНЫ"; }
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            this.DataBind();
-        }
+      protected string data1 = ("")
+        
     }
 }
