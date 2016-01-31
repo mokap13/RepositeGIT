@@ -7,9 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Main : System.Web.UI.MasterPage
     {
-      protected string data1 = ("")
-        
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
