@@ -45,6 +45,7 @@
     <Compile Include="DuckBase.cs" />
     <Compile Include="Ducks\ExoticDuck.cs" />
     <Compile Include="Ducks\GreenDuck.cs" />
+    <Compile Include="Ducks\RubberDuck.cs" />
     <Compile Include="Ducks\WoodenDuck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

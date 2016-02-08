@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace PatternStrategy.Ducks
 {
-    class RubberDuck
+    class RubberDuck:DuckBase
     {
+        public override void Display()
+        {
+            Console.WriteLine("Hello! I'm Rubber Duck!");
+        }
+        public override void Fly()
+        {
+            
+        }
     }
 }
