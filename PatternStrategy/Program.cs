@@ -14,6 +14,7 @@ namespace PatternStrategy
             Ducks.Add(new SimpleDuck());
             Ducks.Add(new ExoticDuck());
             Ducks.Add(new GreenDuck());
+            Ducks.Add(new WoodenDuck());
 
             foreach (var item in Ducks)
             {
