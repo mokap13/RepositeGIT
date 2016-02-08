@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Ducks
+namespace PatternStrategy.Fly
 {
-    class GreenDuck:DuckBase
+    class SimpleFly : IFlyable
     {
-        public override void Display()
+        public void Fly()
         {
-            Console.WriteLine("Hello! I'm Green Duck");
+            Console.WriteLine("I'm flying!");
         }
     }
 }

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Ducks
+namespace PatternStrategy.Quack
 {
-    class GreenDuck:DuckBase
+    class ExoticQuack:IQuackable
     {
-        public override void Display()
+        public void Quack()
         {
-            Console.WriteLine("Hello! I'm Green Duck");
+            Console.WriteLine("Meow! Meow!");
         }
     }
 }

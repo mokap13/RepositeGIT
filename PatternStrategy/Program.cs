@@ -18,18 +18,12 @@ namespace PatternStrategy
             Ducks.Add(new WoodenDuck());
             Ducks.Add(new RubberDuck());
 
-            foreach (var item in Ducks)
+            foreach (var duck in Ducks)
             {
-                item.Display();
-                item.Swim();
-                if (item is IQuackable)
-                {
-                    (item as IQuackable).Quack();
-                }
-                if (item is IFlyable)
-                {
-                    (item as IFlyable).Fly();
-                }
+                duck.Display();
+                duck.Swim();
+                duck.Quack();
+                duck.Fly();
                 Console.WriteLine("---------------------");
             }
             Console.ReadKey();

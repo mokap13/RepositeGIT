@@ -6,21 +6,11 @@ using System.Threading.Tasks;
 
 namespace PatternStrategy.Ducks
 {
-    class SimpleDuck:DuckBase,IQuackable,IFlyable
+    class SimpleDuck : DuckBase
     {
         public override void Display()
         {
             Console.WriteLine("Hello! I'm Simple Duck");
-        }
-
-        public void Quack()
-        {
-            Console.WriteLine("Quack! Quack!");
-        }
-
-        public void Fly()
-        {
-            Console.WriteLine("I'm flying");
         }
     }
 }

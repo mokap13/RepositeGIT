@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Ducks
+namespace PatternStrategy.Quack
 {
-    interface IFlyable
+    class NoQuack:IQuackable
     {
-        void Fly();
+        public void Quack()
+        {
+
+        }
     }
 }
