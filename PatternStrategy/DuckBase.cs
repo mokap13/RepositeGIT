@@ -13,7 +13,7 @@ namespace PatternStrategy
         {
             Console.WriteLine("Quack! Quack!");
         }
-        public virtual void Swim()
+        public void Swim()
         {
             Console.WriteLine("I'm swiming");
         }
