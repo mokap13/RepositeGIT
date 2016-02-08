@@ -10,7 +10,7 @@ namespace PatternStrategy
     {
         public override void Display()
         {
-            Console.WriteLine("Hello! I'm Simble Duck");
+            Console.WriteLine("Hello! I'm Simple Duck");
         }
     }
 }

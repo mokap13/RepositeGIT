@@ -20,7 +20,7 @@ namespace PatternStrategy
                 item.Display();
                 item.Quack();
                 item.Swim();
-
+                item.Fly();
                 Console.WriteLine("---------------------");
             }
             Console.ReadKey();
