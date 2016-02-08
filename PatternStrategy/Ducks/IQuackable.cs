@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace PatternStrategy.Ducks
 {
-    class WoodenDuck:DuckBase
+    interface IQuackable
     {
-        public override void Display()
-        {
-            Console.WriteLine("Hello! I'm Wooden Duck");
-        }
+        void Quack();
     }
 }

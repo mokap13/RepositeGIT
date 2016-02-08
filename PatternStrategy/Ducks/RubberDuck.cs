@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace PatternStrategy.Ducks
 {
-    class RubberDuck:DuckBase
+    class RubberDuck:DuckBase,IQuackable
     {
         public override void Display()
         {
             Console.WriteLine("Hello! I'm Rubber Duck!");
         }
-        public override void Fly()
+        
+        public void Quack()
         {
-            
+            Console.WriteLine("Quack! Quack!");
         }
     }
 }

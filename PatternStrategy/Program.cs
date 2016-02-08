@@ -21,9 +21,15 @@ namespace PatternStrategy
             foreach (var item in Ducks)
             {
                 item.Display();
-                item.Quack();
                 item.Swim();
-                item.Fly();
+                if (item is IQuackable)
+                {
+                    (item as IQuackable).Quack();
+                }
+                if (item is IFlyable)
+                {
+                    (item as IFlyable).Fly();
+                }
                 Console.WriteLine("---------------------");
             }
             Console.ReadKey();

@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="DuckBase.cs" />
     <Compile Include="Ducks\ExoticDuck.cs" />
+    <Compile Include="Ducks\IFlyable.cs" />
     <Compile Include="Ducks\GreenDuck.cs" />
+    <Compile Include="Ducks\IQuackable.cs" />
     <Compile Include="Ducks\RubberDuck.cs" />
     <Compile Include="Ducks\WoodenDuck.cs" />
     <Compile Include="Program.cs" />
