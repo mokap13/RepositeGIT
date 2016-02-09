@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatternObserver.Widgets
 {
-    interface IWidget
+    public interface IObserver
     {
+        void Update(string twitter, string lenta, string tv);
+        void Display();
     }
 }

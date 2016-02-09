@@ -7,21 +7,53 @@ using System.Threading.Tasks;
 
 namespace PatternObserver.News
 {
-    class NewsAggregator
+    class NewsAggregator:ISubject
     {
-        private static TwitWidget _twitWidget;
-        private static TvWidget _tvWidget;
-        private static LentaWidget _lentaWidget;
         private static Random _random;
-
+        private List<IObserver> _observers;
+        /// <summary>
+        /// Хранит все подписанные приложения
+        /// </summary>
         public NewsAggregator()
         {
-            _twitWidget = new TwitWidget();
-            _tvWidget = new TvWidget();
-            _lentaWidget = new LentaWidget();
             _random = new Random();
+            _observers = new List<IObserver>();
+        }
+        /// <summary>
+        /// Подписка на новости
+        /// </summary>
+        /// <param name="observer">Приложение отображающее появляющиеся новости</param>
+        public void RegisterObserver(IObserver observer)
+        {
+            _observers.Add(observer);
+        }
+        /// <summary>
+        /// Отписка от новостей
+        /// </summary>
+        /// <param name="observer">Приложение отображающее появляющиеся новости</param>
+        public void RemoveObserver(IObserver observer)
+        {
+            _observers.Remove(observer);
+        }
+        /// <summary>
+        /// Обновление информации(новостей) в подписанных приложениях
+        /// </summary>
+        public void NotifyObservers()
+        {
+            string twitter = GetTwitNews();
+            string lenta = GetLentaNews();
+            string tv = GetTvNews();
+
+            foreach (var observer in _observers)
+            {
+                observer.Update(twitter,lenta,tv);
+            }
         }
 
+        /// <summary>
+        /// Эмуляция новостей
+        /// </summary>
+        /// <returns></returns>
         public string GetTwitNews()
         {
             var news = new List<string>
@@ -55,16 +87,12 @@ namespace PatternObserver.News
 
             return news[_random.Next(3)];
         }
-
+        /// <summary>
+        /// Обновить новости
+        /// </summary>
         public void NewNewsAvailable()
         {
-            string twitter = GetTwitNews();
-            string lenta = GetLentaNews();
-            string tv = GetTvNews();
-
-            _twitWidget.Update(twitter, lenta, tv);
-            _tvWidget.Update(twitter, lenta, tv);
-            _lentaWidget.Update(twitter, lenta, tv);
+            NotifyObservers();
         }
     }
 }
