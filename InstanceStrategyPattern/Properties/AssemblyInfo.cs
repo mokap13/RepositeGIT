@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("PatternStrategy")]
+[assembly: AssemblyTitle("InstanceStrategyPattern")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PatternStrategy")]
+[assembly: AssemblyProduct("InstanceStrategyPattern")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("7a8c8f88-65c3-41e7-99f2-860e6cab782d")]
+[assembly: Guid("78677836-f463-458d-8933-cd032bdedd56")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Fly
+namespace InstanceStrategyPattern.Strike
 {
-    class NoFly:IFlyable
+    public interface IStrike
     {
-        public void Fly()
-        {
-
-        }
+        void Strike();
     }
 }

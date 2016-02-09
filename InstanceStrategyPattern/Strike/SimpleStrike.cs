@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Quack
+namespace InstanceStrategyPattern.Strike
 {
-    class SimpleQuack:IQuackable
+    class SimpleStrike:IStrike
     {
-        public void Quack()
+        public void Strike()
         {
-            Console.WriteLine("Quack! Quack!");
+            Console.WriteLine("I'm Simple Striking!");
         }
     }
 }

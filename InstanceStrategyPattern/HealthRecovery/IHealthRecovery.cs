@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Quack
+namespace InstanceStrategyPattern.HealthRecovery
 {
-    class NoQuack:IQuackable
+    public interface IHealthRecovery
     {
-        public void Quack()
-        {
-
-        }
+        void HealthRecovery();
     }
 }

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternStrategy.Fly
+namespace InstanceStrategyPattern.Strike
 {
-    class SimpleFly : IFlyable
+    class WeakStrike:IStrike
     {
-        public void Fly()
+        public void Strike()
         {
-            Console.WriteLine("I'm flying!");
+            Console.WriteLine("I'm weak striking...");
         }
     }
 }
