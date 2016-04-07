@@ -1,12 +1,14 @@
 ﻿using System;
+using System.IO.Ports;
+using System.Threading;
 
 namespace ExamSoftwareEngin
 {
     class Program
     {
-        static Random _random = new Random();//Генератор случайных чисел(общий для всех задач)
+        static Random random = new Random();//Генератор случайных чисел(общий для всех задач)
 
-        static ConsoleKeyInfo cki = new ConsoleKeyInfo();//Состояние клавиши
+        static ConsoleKeyInfo keyState = new ConsoleKeyInfo();//Состояние клавиши
 
         delegate void del();
 
@@ -51,7 +53,7 @@ namespace ExamSoftwareEngin
                         Form(new del(Arrays), "Массивы");
                         break;
                     case (2):
-                        Form(new del(CalcMath), "Математический расчет");
+                        Form(new del(CalcMathTasks), "Математический расчет");
                         break;
                     case (3):
                         Form(new del(LogicExpressions), "Проверка на истинность логического выражения");
@@ -60,6 +62,7 @@ namespace ExamSoftwareEngin
                         Form(new del(SquareLogicExpressions), "Проверка координаты");
                         break;
                     case(5):
+                        Form(new del(Branches), "Ветвление");
                         break;
                 }
                 #endregion 
@@ -88,7 +91,7 @@ namespace ExamSoftwareEngin
             Console.WriteLine("Исходный массив:");
             for (int i = 0; i < SIZE_ARRAY; i++)
             {
-                arr[i] = _random.Next(MIN, MAX);
+                arr[i] = random.Next(MIN, MAX);
                 Console.Write(arr[i] + "  ");
             }
             
@@ -114,7 +117,7 @@ namespace ExamSoftwareEngin
         /// <summary>
         /// 17)Найти площадь треугольника, две стороны которого равны а и b, а угол между этими сторонами γ. 
         /// </summary>
-        static void CalcMath()
+        static void CalcMathTasks()
         {
             //Константы для настройки генератора случайных чисел
             const int MIN_SIDE = 1;//Минимальное значение стороны
@@ -129,24 +132,24 @@ namespace ExamSoftwareEngin
             double sinY = 0;//Синус угла
             double square = 0;//Площадь
             //Присваеваем случайные числа
-            sideA = _random.Next(MIN_SIDE, MAX_SIDE);
-            sideB = _random.Next(MIN_SIDE, MAX_SIDE);
-            angleAB = _random.Next(MIN_ANGLE, MAX_ANGLE);
+            sideA = random.Next(MIN_SIDE, MAX_SIDE);
+            sideB = random.Next(MIN_SIDE, MAX_SIDE);
+            angleAB = random.Next(MIN_ANGLE, MAX_ANGLE);
 
             //Выводим на экран исходные значения
             Console.WriteLine("Сторона А = " + sideA);
             Console.WriteLine("Сторона B = " + sideB);
             Console.WriteLine("Угол между сторонами А и В в градусах = " + angleAB);
 
-            //Расчитываем и выводим угол в радианах
+            //Рассчитываем и выводим угол в радианах
             angleRadAB = angleAB * Math.PI / MAX_ANGLE;
             Console.WriteLine("Угол в радианах " + angleRadAB);
 
-            //Расчитываем и выводим синус угла AB
+            //Рассчитываем и выводим синус угла AB
             sinY = Math.Sin(angleRadAB);
             Console.WriteLine("Синус угла = " + sinY);
 
-            //Расчитываем и выводим значение площади
+            //Рассчитываем и выводим значение площади
             square = (sideA*sideB*sinY)/2;
             Console.Write("Площадь данного треугольника = ");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -169,7 +172,7 @@ namespace ExamSoftwareEngin
             const int MIN = 1000;
             const int MAX = 9999;
             
-            number = _random.Next(MIN, MAX);
+            number = random.Next(MIN, MAX);
             Console.WriteLine(number);
 
             //Вычисляем разряды числа(тысячи и сотни)
@@ -181,9 +184,10 @@ namespace ExamSoftwareEngin
             {
                 //Вычисляем разряд десяток
                 ten = (number - thousand * 1000 - handred * 100 - number % 10) / 10;
+                //Проверяем условие
                 if (handred < ten)
                 {
-                    //Вычисляем разряд едениц
+                    //Вычисляем разряд единиц
                     one = number - thousand * 1000 - handred * 100 - ten * 10;
                     if (ten < one)
                     {
@@ -204,15 +208,15 @@ namespace ExamSoftwareEngin
         /// если точка с координатами (х, у) принадлежит закрашенной области,
         /// и false — в противном случае: 
         /// </summary>
-        static void SquareLogicExpressions()
+        static void SquareLogicExpressions()    
         {
             //Константы для настройки генератора случайных чисел
             const int MIN = -9;
             const int MAX = 9;
 
             int x, y;
-            x = _random.Next(MIN, MAX);
-            y = _random.Next(MIN, MAX);
+            x = random.Next(MIN, MAX);
+            y = random.Next(MIN, MAX);
             
             //Условия при которых точка принадлежит заданной области
             if (y <= x + 5 && y >= -x - 5 && y >= x - 5 && y * y <= 25 - x * x)
@@ -236,7 +240,28 @@ namespace ExamSoftwareEngin
         /// </summary>
         static void Branches()
         {
+            //Инициализируем последовательный порт
+            SerialPort port = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+            port.Open();
+            int sizeBuff = 1;
+            byte[] buff = new byte[sizeBuff];
+            string str;
+            int value;
 
+            Console.Clear();
+            //Считываем из порта данные
+            port.Read(buff,0,1);
+            str = Convert.ToInt16(buff[0]).ToString();
+            Console.WriteLine(str);
+            value = int.Parse(str);
+            if (value < 10)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(">>>>ВНИМАНИЕ!!! в здании пожар, как можно быстрее покиньте здание<<<<");
+                Console.ResetColor();
+            }
+            port.Close();
         }
         /// <summary>
         /// Форма для вывода задачи на экран с повтором выполнения
@@ -256,13 +281,13 @@ namespace ExamSoftwareEngin
                 Console.WriteLine("---------------------------------------------------------");
 
                 //Ожидание нажатся какой-либо клавиши
-                cki = Console.ReadKey();
+                keyState = Console.ReadKey();
 
                 //Возрат каретки для эстетичности визуализации данных на экране
                 Console.WriteLine("\r");
                 
                 //Условия для выхода из цикла
-                if (cki.Key != ConsoleKey.Spacebar)
+                if (keyState.Key != ConsoleKey.Spacebar)
                 {
                     return;
                 }
